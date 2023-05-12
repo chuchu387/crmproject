@@ -1,10 +1,46 @@
 
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-md-6 offset-md-3">
+
     {% if user.is_authenticated %}
 
-    <h1>hello world</h1>
+    <h1>Informations</h1>
+    <table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Created_Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zipcode</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% if informations %}
+            {% for information in informations %}
+                <tr>
+                    <td>{{ information.created_id }}</td>
+                    <td>{{ information.id }}</td>
+                    <td>{{ information.first_name }}
+                    {{ information.last_name }}</td>
+                    <td>{{ information.email }}</td>
+                    <td>{{ information.phone }}</td>
+                    <td>{{ information.address }}</td>
+                    <td>{{ information.city }}</td>
+                    <td>{{ information.state }}</td>
+                    <td>{{ information.zipcode }}</td>
+
+                </tr>
+            {% endfor %}
+        {% endif %}
+  </tbody>
+</table>
+
+
     {% else %}
 <h1>Login</h1>
     <br>
@@ -12,19 +48,19 @@
         {% csrf_token %}
         <form>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label  class="form-label">Email address</label>
     <input type="text" class="form-control" name="username" placeholder="enter username" required>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label  class="form-label">Password</label>
     <input type="password" class="form-control" name="password" placeholder="enter your password" required>
   </div>
             <br>
   <button type="submit" class="btn btn-secondary">Login</button>
 </form>
     </form>
-</div>
+
 {% endif %}
 
 {% endblock %}
