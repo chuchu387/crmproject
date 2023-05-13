@@ -24,9 +24,9 @@
             {% for information in informations %}
                 <tr>
                     <td>{{ information.created_id }}</td>
-                    <td>{{ information.id }}</td>
-                    <td>{{ information.first_name }}
-                    {{ information.last_name }}</td>
+                    <td><a href="{% url 'recordinfo' information.id %}">{{ information.id }}</a></td>
+                    <td><a href="{% url 'recordinfo' information.id %}">{{ information.first_name }}
+                    {{ information.last_name }}</a></td>
                     <td>{{ information.email }}</td>
                     <td>{{ information.phone }}</td>
                     <td>{{ information.address }}</td>
@@ -46,7 +46,6 @@
     <br>
     <form action="{% url 'home' %}" method="POST">
         {% csrf_token %}
-        <form>
   <div class="mb-3">
     <label  class="form-label">Email address</label>
     <input type="text" class="form-control" name="username" placeholder="enter username" required>
@@ -58,7 +57,6 @@
   </div>
             <br>
   <button type="submit" class="btn btn-secondary">Login</button>
-</form>
     </form>
 
 {% endif %}

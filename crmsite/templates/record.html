@@ -2,5 +2,28 @@
 {% block content %}
 
 <h1>Cousomer Records</h1>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{ customer_record.first_name }}
+                    {{ customer_record.last_name }}
+  </div>
+  <ul class="list-group list-group-flush">
+      <strong>Created At: </strong><li class="list-group-item">{{ customer_record.created_id }}</li>
+    <strong>Id: </strong><li class="list-group-item">{{ customer_record.id }}</li>
+    <strong>Email: </strong><li class="list-group-item">{{ customer_record.email }}</li>
+    <strong>Phone Number: </strong><li class="list-group-item">{{ customer_record.phone }}</li>
+    <strong>Address: </strong><li class="list-group-item">{{ customer_record.address }}</li>
+    <strong>City: </strong><li class="list-group-item">{{ customer_record.city }}</li>
+    <strong>State: </strong><li class="list-group-item">{{ customer_record.state }}</li>
+    <strong>Zip-code: </strong><li class="list-group-item">{{ customer_record.zipcode }}</li>
+  </ul>
+</div>
+<br>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back To Home</a>
+
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
+
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update Record</a>
+
 
 {% endblock%}
