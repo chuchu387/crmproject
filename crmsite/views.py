@@ -91,7 +91,7 @@ def update_record(request, pk):
         form = AddRecordForm(request.POST or None, instance=current_record)
         if form.is_valid():
             form.save()
-            messages.success(request, "Record Has Been Updated!")
+            messages.success(request, "Record is successfully Updated!")
             return redirect('home')
         return render(request, 'update_record.html', {'form':form})
     else:
